@@ -16,14 +16,16 @@
       <img class="header-image" src="images/seussology-logo.svg" alt="Seussology">
       <h1 class="header-title">Books</h1>
     </header>
-    <section>
+    <section id="app">
       <div class="books">
-        <div class="book">
-          <img class="book-image" src="images/covers/31.jpg" title="The Cat in the Hat">
+        <div v-for="book in books" class="book">
+          <img class="book-image" :src="'images/covers/'+ book.image" :title="book.title">
         </div>
       </div>
     </section>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>
