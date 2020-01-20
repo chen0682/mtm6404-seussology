@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Seussology</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
   <script src="books.js"></script>
 </head>
 
@@ -17,6 +18,20 @@
       <h1 class="header-title">Books</h1>
     </header>
     <section id="app">
+      <form class="form" @submit.prevent="">
+        <div class="form-group flex-grow">
+          <input type="search" class="form-input" placeholder="Search books titles..." v-model="query">
+          <button type="submit" class="form-submit"><i class="fas fa-search fa-2x"></i></button>
+        </div>
+        <div class="form-group d-grid justify-content-center">
+          <label>Sort</label>
+          <select v-model="sortBy">
+            <option value="title">By Title</option>
+            <option value="year">By Year</option>
+          </select>
+        </div>
+
+      </form>
       <div class="filters">
         <button class="button" @click="category=''">All</button>
         <button class="button" @click="category='Favorites'">Favorites</button>
@@ -24,10 +39,29 @@
         <button class="button" @click="category='Big Books'">Big Books</button>
       </div>
       <div class="books">
-        <div v-for="book in books" v-if="category ? book.category === category : true" class="book">
+        <div v-for="(book, index) in books" v-if="category ? book.category === category : true" :key="index"
+          class="book" @click="selectedBook = book">
           <img class="book-image" :src="'images/covers/'+ book.image" :title="book.title">
         </div>
       </div>
+      <transition name="fade">
+        <div v-cloak v-if="selectedBook" class="modal">
+          <div class="selected-book">
+            <div class="modal-close" @click="selectedBook = false"><i class="fas fa-times"></i></div>
+            <div class="selected-book-image">
+              <img :src="'images/covers/'+ selectedBook.image" :title="selectedBook.title">
+            </div>
+            <div class="selected-book-details">
+              <h2>{{ selectedBook.title }}
+                ({{ selectedBook.year }})</h2>
+              <p>{{ selectedBook.description }}</p>
+              <blockquote class="selected-book-quote" v-for="quote in selectedBook.quotes">
+                {{ quote }}
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </transition>
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
