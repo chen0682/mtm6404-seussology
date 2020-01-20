@@ -76,6 +76,7 @@ hr {
   align-items: center;
   margin: 5px 0;
   padding: 10px;
+  cursor: pointer;
 }
 
 .book-image {
@@ -176,6 +177,8 @@ label {
   border-color: var(--primary-color-dark);
   border-radius: 50%;
   color: var(--secondary-color);
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .selected-book {

@@ -47,7 +47,7 @@
       <transition name="fade">
         <div v-cloak v-if="selectedBook" class="modal">
           <div class="selected-book">
-            <div class="modal-close" @click="selectedBook = false"><i class="fas fa-times"></i></div>
+            <button class="modal-close" @click="selectedBook = false"><i class="fas fa-times"></i></button>
             <div class="selected-book-image">
               <img :src="'images/covers/'+ selectedBook.image" :title="selectedBook.title">
             </div>
