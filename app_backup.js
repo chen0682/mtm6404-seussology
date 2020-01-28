@@ -7,9 +7,9 @@ const app = new Vue({
 })
 
 // if (category) {
-//   books.category === coategory
+//   book.category === category
 // } else {
 //   true
 // }
 
-// (category) ? books.category === category : true
+// (category) ? book.category === category  : true
