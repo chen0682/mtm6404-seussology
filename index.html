@@ -20,12 +20,12 @@
     <section id="app">
       <form class="form">
         <div class="form-group flex-grow">
-          <input type="search" class="form-input" placeholder="Search books titles...">
+          <input type="search" class="form-input" placeholder="Search books titles..." v-model="query">
           <button type="submit" class="form-submit"><i class="fas fa-search fa-2x"></i></button>
         </div>
         <div class="form-group d-grid justify-content-center">
           <label>Sort</label>
-          <select>
+          <select v-model="sortBy">
             <option value="title">By Title</option>
             <option value="year">By Year</option>
           </select>
